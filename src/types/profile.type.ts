@@ -5,4 +5,4 @@ export type Profile = {
   email: string;
   avatar?: string;
   type: ProfileKind;
-}
+};

@@ -70,8 +70,8 @@ export default class TSVFileReader implements FileReaderInterface {
           },
           commentsCount: Number(commentsCount),
           location: {
-            longitude,
             latitude,
+            longitude
           }
         };
       });
