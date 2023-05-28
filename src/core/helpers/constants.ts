@@ -11,4 +11,3 @@ export const CHUNK_SIZE = {
   /** 64KB */
   Write: 2 ** 16
 };
-  
