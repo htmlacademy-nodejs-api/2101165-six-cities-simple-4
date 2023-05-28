@@ -1,0 +1,136 @@
+{
+  "api": {
+    "titles": [
+      "Квартира на Неглинке",
+      "Халупа напротив Кремля",
+      "Клоповник",
+      "Блат-хата"
+    ],
+    "descriptions": [
+      "Дешево и сердито. Здесь вы прочувствуете всю прелесть житья с соседясми-алковантами. При бронировании welcome-drink на входе бесплатно!",
+      "Замечательное место для интровертов. Много уютных уголков, можно уединиться в кладовке или под кроватью!",
+      "Ищете лучшее место в городе? Вам сюда. Выбор путешественников 2022 года согласно независимым рейтингам.",
+      "Простое место переночевать. В шаговой доступности все необходимое: бордель, полицейский участок и аптека."
+    ],
+    "cities": [
+      {
+        "name": "Paris",
+        "coords": [
+          48.85661,
+          2.351499
+        ]
+      },
+      {
+        "name": "Cologne",
+        "coords": [
+          50.938361,
+          6.959974
+        ]
+      },
+      {
+        "name": "Brussels",
+        "coords": [
+          50.846557,
+          4.351697
+        ]
+      },
+      {
+        "name": "Amsterdam",
+        "coords": [
+          52.370216,
+          4.895168
+        ]
+      },
+      {
+        "name": "Hamburg",
+        "coords": [
+          53.550341,
+          10.000654
+        ]
+      },
+      {
+        "name": "Dusseldorf",
+        "coords": [
+          51.225402,
+          6.776314
+        ]
+      }
+    ],
+    "photos": [
+      "https://placebear.com/260/201",
+      "https://placebear.com/260/202",
+      "https://placebear.com/260/203",
+      "https://placebear.com/260/204",
+      "https://placebear.com/260/205",
+      "https://placebear.com/260/206"
+    ],
+    "features": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "housing": [
+      "apartment",
+      "house",
+      "room",
+      "hotel"
+    ],
+    "user": {
+      "names": [
+        "John",
+        "Victor",
+        "Maria",
+        "Oleg"
+      ],
+      "emails": [
+        "getme@mail.ru",
+        "thisisit@bk.ru",
+        "nicetoseeyou@yandex.ru",
+        "whyarewestillhere@purpose.com"
+      ],
+      "userpics": [
+        "https://loremflickr.com/50/51",
+        "https://loremflickr.com/50/52",
+        "https://loremflickr.com/50/53",
+        "https://loremflickr.com/50/54"
+      ],
+      "passwords": [
+        "qwerty",
+        "1234!",
+        "asdfg",
+        "zxcvb!",
+        "password1"
+      ]
+    },
+    "minMax": {
+      "rating": [
+        1,
+        5
+      ],
+      "bedrooms": [
+        1,
+        8
+      ],
+      "capacity": [
+        1,
+        10
+      ],
+      "price": [
+        100,
+        100000
+      ],
+      "comments": [
+        0,
+        30
+      ],
+      "weekdays": [
+        1,
+        7
+      ]
+    }
+  }
+}
