@@ -11,6 +11,7 @@ export default class GenerateCommand implements CliCommandInterface {
 
   public async execute(...parameters:string[]): Promise<void> {
     const [offersCount, filepath, url] = parameters;
+    const count = Number(offersCount);
 
     try {
       this.initialData = await got.get(url).json();
@@ -21,12 +22,24 @@ export default class GenerateCommand implements CliCommandInterface {
     }
 
     const offerGeneratorString = new OfferGenerator(this.initialData);
-    const tsvFileWriter = new TSVFileWriter(filepath);
 
-    for (let i = 0; i < Number(offersCount); i++) {
-      await tsvFileWriter.write(offerGeneratorString.generate());
+
+    try {
+
+      if (!Number.isInteger(count)) {
+        throw new Error();
+      }
+
+      const tsvFileWriter = new TSVFileWriter(filepath);
+
+      for (let i = 0; i < Number(count); i++) {
+        await tsvFileWriter.write(offerGeneratorString.generate());
+      }
+
+      console.log(getCliTextColor.success(`Файл "${filepath}" создан!`));
+
+    } catch {
+      console.log(getCliTextColor.error('Параметр <offersCount> не является числом!'));
     }
-
-    console.log(getCliTextColor.success(`Файл "${filepath}" создан!`));
   }
 }
