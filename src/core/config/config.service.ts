@@ -17,7 +17,7 @@ export default class ConfigService implements ConfigInterface<RestSchema> {
     if (parsedOutput.error) {
       throw new Error('Can\'t read .env file. Perhaps the file does not exists.');
     }
-    
+
     configRestSchema.load({});
     configRestSchema.validate({ allowed: 'strict', output: this.logger.info });
 
