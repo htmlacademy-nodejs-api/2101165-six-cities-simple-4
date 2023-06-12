@@ -9,10 +9,10 @@ export default class HelpCommand implements CliCommandInterface {
       Пример:
         main.js --<command> [--arguments]
       Команды:
-        --version:                                    # выводит номер версии
-        --help:                                       # печатает этот текст
-        --import <path>:                              # импортирует данные из TSV
-        --generate <offersCount> <filepath> <url>:    # генерирует тестовые данные
+        --version:                                                                # выводит номер версии
+        --help:                                                                   # печатает этот текст
+        --import <path> <login> <password> <host> <port> <database-name> <salt>:  # импортирует данные из TSV
+        --generate <offersCount> <filepath> <url>:                                # генерирует тестовые данные
     `);
   }
 }

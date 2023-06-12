@@ -1,11 +1,11 @@
-import typegoose, {defaultClasses, getModelForClass, Ref} from '@typegoose/typegoose';
+import { prop, modelOptions, defaultClasses, getModelForClass, Ref} from '@typegoose/typegoose';
 import { CityEnum } from '../../types/city.enum.js';
 import { OfferKind } from '../../types/offer-kind.enum.js';
 import { Goods } from '../../types/goods.enum.js';
 import { UserEntity } from '../user/user.entity.js';
 import { Location } from '../../types/location.type.js';
 
-const { prop, modelOptions } = typegoose;
+// const { prop, modelOptions } = typegoose;
 
 export interface OfferEntity extends defaultClasses.Base {}
 
