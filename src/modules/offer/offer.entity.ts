@@ -5,8 +5,6 @@ import { Goods } from '../../types/goods.enum.js';
 import { UserEntity } from '../user/user.entity.js';
 import { Location } from '../../types/location.type.js';
 
-// const { prop, modelOptions } = typegoose;
-
 export interface OfferEntity extends defaultClasses.Base {}
 
 @modelOptions({
