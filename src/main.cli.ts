@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+import 'reflect-metadata';
 import 'reflect-metadata'; // на классах расставлены декораторы, при импорте в наш CLI они будут исполняться. Импорт нужен чтобы ничего случайно не сломать.
 import CLIApplication from './app/cli.js';
 import HelpCommand from './core/cli-command/helper.command.js';

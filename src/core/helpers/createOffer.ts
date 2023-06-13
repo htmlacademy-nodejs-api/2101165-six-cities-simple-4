@@ -1,8 +1,7 @@
 import { Offer } from '../../types/offer.type.js';
-import { City } from '../../types/city.type.js';
-import { OfferKind } from '../../types/offer-kind.type.js';
-import { Goods } from '../../types/goods.type.js';
-import { OfferPhotos } from '../../types/offerPhotos.type';
+import { CityEnum } from '../../types/city.enum.js';
+import { OfferKind } from '../../types/offer-kind.enum.js';
+import { Goods } from '../../types/goods.enum.js';
 import { StringBool } from '../../types/string-bool.type.js';
 import { TSV_SEPARATOR, stringBoolToBool } from './index.js';
 
@@ -26,18 +25,16 @@ export function createOffer(offerData: string): Offer {
     location,
   ] = offerData.replace('\n', '').split(TSV_SEPARATOR.Tab);
 
-  const [name, email, userpic, password, userIsPro] = user.split(TSV_SEPARATOR.String);
+  const [name, email, userpic, userIsPro] = user.split(TSV_SEPARATOR.String);
   const [lat, lng] = location.split(TSV_SEPARATOR.String);
 
   return {
     title,
     description,
     postedAt: new Date(postedAt),
-    city: city as City,
-    photos: {
-      preview,
-      all: allPhotos.split(TSV_SEPARATOR.String) as OfferPhotos,
-    },
+    city: city as CityEnum,
+    preview,
+    photos: allPhotos.split(TSV_SEPARATOR.String) as string[],
     isPremium: stringBoolToBool(isPremium as StringBool),
     rating: Number(rating),
     housing: housing as OfferKind,
@@ -49,7 +46,6 @@ export function createOffer(offerData: string): Offer {
       name,
       email,
       userpic,
-      password,
       isPro: stringBoolToBool(userIsPro as StringBool),
     },
     commentsAmount: Number(commentsAmount),

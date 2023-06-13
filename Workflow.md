@@ -69,7 +69,7 @@ npm start
 #### Запустить сервер
 
 ```bash
-npm mock:server
+npm run mock:server
 ```
 
 Запуск тестового сервера.
