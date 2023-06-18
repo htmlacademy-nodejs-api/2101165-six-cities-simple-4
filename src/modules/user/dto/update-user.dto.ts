@@ -1,5 +1,4 @@
-export default class UpdateUserDto {
-  public avatarPath?: string;
-  public firstname?: string;
-  public lastname?: string;
-}
+import CreateUserDto from './create-user.dto';
+
+export type UpdateUserDto = Partial <CreateUserDto>;
+
