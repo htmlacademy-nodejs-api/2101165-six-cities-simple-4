@@ -1,8 +1,6 @@
 import { User } from '../../types/user.type.js';
-import typegoose, { defaultClasses, getModelForClass } from '@typegoose/typegoose';
+import {prop, modelOptions, defaultClasses, getModelForClass } from '@typegoose/typegoose';
 import { createSHA256 } from '../../core/helpers/index.js';
-
-const { prop, modelOptions } = typegoose;
 
 export interface UserEntity extends defaultClasses.Base {}
 
