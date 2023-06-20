@@ -6,6 +6,8 @@ import { inject, injectable } from 'inversify';
 import { DatabaseClientInterface } from '../core/database-client/database-client.interface';
 import { getMongoURI } from '../core/helpers/index.js';
 import express, { Express } from 'express';
+import { ControllerInterface } from '../core/controller/controller.interface.js';
+import { ExceptionFilterInterface } from '../core/exception-filters/exception-filter.interface.js';
 
 @injectable()
 export default class RestApplication {
@@ -14,14 +16,17 @@ export default class RestApplication {
   constructor(
     @inject(AppComponent.LoggerInterface) private readonly logger: LoggerInterface,
     @inject(AppComponent.ConfigInterface) private readonly config: ConfigInterface<RestSchema>,
-    @inject(AppComponent.DatabaseClientInterface) private readonly databaseClient: DatabaseClientInterface
-    ) {
-      this.expressApplication = express();
-    }
+    @inject(AppComponent.DatabaseClientInterface) private readonly databaseClient: DatabaseClientInterface,
+    @inject(AppComponent.CategoryController) private readonly cityController: ControllerInterface,
+    @inject(AppComponent.ExceptionFilterInterface) private readonly exceptionFilter: ExceptionFilterInterface,
+    @inject(AppComponent.UserController) private readonly userController: ControllerInterface,
+  ) {
+    this.expressApplication = express();
+  }
 
   private async _initDb() {
     this.logger.info('Init database…');
-    
+
     const mongoUri = getMongoURI(
       this.config.get('DB_USER'),
       this.config.get('DB_PASSWORD'),
@@ -43,10 +48,32 @@ export default class RestApplication {
     this.logger.info(`🚀Server started on http://localhost:${this.config.get('PORT')}`);
   }
 
+  private async _initRoutes() {
+    this.logger.info('Controller initialization…');
+    this.expressApplication.use('/cities', this.cityController.router);
+    this.expressApplication.use('/users', this.userController.router);
+    this.logger.info('Controller initialization completed');
+  }
+
+  private async _initMiddleware() {
+    this.logger.info('Global middleware initialization…');
+    this.expressApplication.use(express.json());
+    this.logger.info('Global middleware initialization completed');
+  }
+
+  private async _initExceptionFilters() {
+    this.logger.info('Exception filters initialization');
+    this.expressApplication.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
+    this.logger.info('Exception filters completed');
+  }
+
   public async init() {
     this.logger.info('Application initialization…');
-    
+
     await this._initDb();
+    await this._initMiddleware();
+    await this._initRoutes();
+    await this._initExceptionFilters();
     await this._initServer();
   }
 }
