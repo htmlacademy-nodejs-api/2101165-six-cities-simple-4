@@ -12,23 +12,23 @@ import { StatusCodes } from 'http-status-codes';
 import HttpError from '../../core/errors/http-error.js';
 
 @injectable()
-export default class CategoryController extends Controller {
+export default class CityController extends Controller {
   constructor(
         @inject(AppComponent.LoggerInterface) protected readonly logger: LoggerInterface,
         @inject(AppComponent.CityServiceInterface) private readonly cityService: CityServiceInterface,
   ) {
     super(logger);
 
-    this.logger.info('Register routes for CategoryController…');
+    this.logger.info('Register routes for CityController…');
 
     this.addRoute({path: '/', method: HttpMethod.Get, handler: this.index});
     this.addRoute({path: '/', method: HttpMethod.Post, handler: this.create});
   }
 
   public async index(_req: Request, res: Response): Promise<void> {
-    const categories = await this.cityService.find();
-    const categoriesToResponse = fillDTO(CityRdo, categories);
-    this.ok(res, categoriesToResponse);
+    const cities = await this.cityService.find();
+    const citiesToResponse = fillDTO(CityRdo, cities);
+    this.ok(res, citiesToResponse);
   }
 
   public async create(
@@ -36,13 +36,13 @@ export default class CategoryController extends Controller {
     res: Response
   ): Promise<void> {
 
-    const existCategory = await this.cityService.findByCityName(body.name);
+    const existCity = await this.cityService.findByCityName(body.name);
 
-    if (existCategory) {
+    if (existCity) {
       throw new HttpError(
         StatusCodes.UNPROCESSABLE_ENTITY,
-        `Category with name «${body.name}» exists.`,
-        'CategoryController'
+        `City with name «${body.name}» exists.`,
+        'CityController'
       );
     }
 

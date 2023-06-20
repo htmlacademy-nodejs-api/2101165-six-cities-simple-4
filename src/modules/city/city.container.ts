@@ -12,7 +12,7 @@ export function createCityContainer() {
 
   cityContainer.bind<CityServiceInterface>(AppComponent.CityServiceInterface).to(CityService);
   cityContainer.bind<types.ModelType<CityEntity>>(AppComponent.CityModel).toConstantValue(CityModel);
-  cityContainer.bind<ControllerInterface>(AppComponent.CategoryController).to(CityController).inSingletonScope();
+  cityContainer.bind<ControllerInterface>(AppComponent.CityController).to(CityController).inSingletonScope();
 
   return cityContainer;
 }

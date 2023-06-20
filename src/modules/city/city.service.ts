@@ -7,7 +7,7 @@ import { CityEntity } from './city.entity.js';
 import { types } from '@typegoose/typegoose';
 import { SortType } from '../../types/sort-type.enum.js';
 
-injectable();
+@injectable()
 export default class CityService implements CityServiceInterface {
   constructor(
     @inject(AppComponent.LoggerInterface) private readonly logger: LoggerInterface,

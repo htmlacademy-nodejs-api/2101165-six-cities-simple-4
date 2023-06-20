@@ -17,7 +17,7 @@ export default class RestApplication {
     @inject(AppComponent.LoggerInterface) private readonly logger: LoggerInterface,
     @inject(AppComponent.ConfigInterface) private readonly config: ConfigInterface<RestSchema>,
     @inject(AppComponent.DatabaseClientInterface) private readonly databaseClient: DatabaseClientInterface,
-    @inject(AppComponent.CategoryController) private readonly cityController: ControllerInterface,
+    @inject(AppComponent.CityController) private readonly cityController: ControllerInterface,
     @inject(AppComponent.ExceptionFilterInterface) private readonly exceptionFilter: ExceptionFilterInterface,
     @inject(AppComponent.UserController) private readonly userController: ControllerInterface,
   ) {

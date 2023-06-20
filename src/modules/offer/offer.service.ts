@@ -80,5 +80,4 @@ export default class OfferService implements OfferServiceInterface {
       })
       .exec();
   }
-
 }
