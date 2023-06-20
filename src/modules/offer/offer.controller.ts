@@ -88,7 +88,6 @@ export default class OfferController extends Controller {
       const offer = await this.offerService.findById(result.id);
       this.created(res, fillDTO(OfferRdo, offer));
     }
-  
 
     public async delete(
       { params }: Request<ParamsOfferDetails>,
