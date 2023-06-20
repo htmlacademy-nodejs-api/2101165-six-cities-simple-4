@@ -32,90 +32,90 @@ export default class OfferController extends Controller {
     this.logger.info('Register routes for OfferController...');
 
     this.addRoute({
-        path: '/',
-        method: HttpMethod.Get,
-        handler: this.index,
-      });
-      this.addRoute({
-        path: '/:offerId',
-        method: HttpMethod.Get,
-        handler: this.show,
-      });
-      this.addRoute({
-        path: '/',
-        method: HttpMethod.Post,
-        handler: this.create,
-      });
-      this.addRoute({
-        path: '/:offerId',
-        method: HttpMethod.Delete,
-        handler: this.delete,
-      });
-      this.addRoute({
-        path: '/:offerId',
-        method: HttpMethod.Patch,
-        handler: this.update,
-      });
-      this.addRoute({
-        path: '/city/:cityId',
-        method: HttpMethod.Get,
-        handler: this.getOffersFromCity,
-      });
-    }
-  
-    public async index(_req: Request, res: Response): Promise<void> {
-      const offers = await this.offerService.find();
-      const offersToResponse = fillDTO(OfferRdo, offers);
+      path: '/',
+      method: HttpMethod.Get,
+      handler: this.index,
+    });
+    this.addRoute({
+      path: '/:offerId',
+      method: HttpMethod.Get,
+      handler: this.show,
+    });
+    this.addRoute({
+      path: '/',
+      method: HttpMethod.Post,
+      handler: this.create,
+    });
+    this.addRoute({
+      path: '/:offerId',
+      method: HttpMethod.Delete,
+      handler: this.delete,
+    });
+    this.addRoute({
+      path: '/:offerId',
+      method: HttpMethod.Patch,
+      handler: this.update,
+    });
+    this.addRoute({
+      path: '/city/:cityId',
+      method: HttpMethod.Get,
+      handler: this.getOffersFromCity,
+    });
+  }
 
-      this.ok(res, offersToResponse);
-    }
+  public async index(_req: Request, res: Response): Promise<void> {
+    const offers = await this.offerService.find();
+    const offersToResponse = fillDTO(OfferRdo, offers);
 
-    public async show(
-      { params }: Request<ParamsOfferDetails>,
-      res: Response
-    ): Promise<void> {
-      const { offerId } = params;
-      const offer = await this.offerService.findById(offerId);
+    this.ok(res, offersToResponse);
+  }
 
-      this.ok(res, fillDTO(OfferRdo, offer));
-    }
+  public async show(
+    { params }: Request<ParamsOfferDetails>,
+    res: Response
+  ): Promise<void> {
+    const { offerId } = params;
+    const offer = await this.offerService.findById(offerId);
 
-    public async create(
-      {body}: Request<UnknownRecord, UnknownRecord, CreateOfferDto>,
-      res: Response
-    ): Promise<void> {
-      const result = await this.offerService.create(body);
-      const offer = await this.offerService.findById(result.id);
-      this.created(res, fillDTO(OfferRdo, offer));
-    }
+    this.ok(res, fillDTO(OfferRdo, offer));
+  }
 
-    public async delete(
-      { params }: Request<ParamsOfferDetails>,
-      res: Response,
-    ): Promise<void> {
-      const { offerId } = params;
-      const offer = await this.offerService.deleteById(offerId);
+  public async create(
+    {body}: Request<UnknownRecord, UnknownRecord, CreateOfferDto>,
+    res: Response
+  ): Promise<void> {
+    const result = await this.offerService.create(body);
+    const offer = await this.offerService.findById(result.id);
+    this.created(res, fillDTO(OfferRdo, offer));
+  }
 
-      await this.commentService.deleteByOfferId(offerId);
+  public async delete(
+    { params }: Request<ParamsOfferDetails>,
+    res: Response,
+  ): Promise<void> {
+    const { offerId } = params;
+    const offer = await this.offerService.deleteById(offerId);
 
-      this.noContent(res, offer);
-    }
+    await this.commentService.deleteByOfferId(offerId);
 
-    public async update(
-      { body, params }: Request<ParamsOfferDetails, UpdateOfferDto>,
-      res: Response,
-    ): Promise<void> {
-      const updatedOffer = await this.offerService.updateById(params.offerId, body);
+    this.noContent(res, offer);
+  }
 
-      this.ok(res, fillDTO(OfferRdo, updatedOffer));
-    }
+  public async update(
+    { body, params }: Request<ParamsOfferDetails, UpdateOfferDto>,
+    res: Response,
+  ): Promise<void> {
+    const updatedOffer = await this.offerService.updateById(params.offerId, body);
 
-    public async getOffersFromCity(
-      { params }: Request<ParamsCityDetails>,
-      res: Response,
-    ): Promise<void> {
-      const offers = await this.offerService.findById(params.cityId);
+    this.ok(res, fillDTO(OfferRdo, updatedOffer));
+  }
 
-      this.ok(res, fillDTO(OfferRdo, offers));
-    }
+  public async getOffersFromCity(
+    { params }: Request<ParamsCityDetails>,
+    res: Response,
+  ): Promise<void> {
+    const offers = await this.offerService.findById(params.cityId);
+
+    this.ok(res, fillDTO(OfferRdo, offers));
+  }
 }
