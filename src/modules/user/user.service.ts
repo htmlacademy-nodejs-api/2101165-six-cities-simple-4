@@ -5,7 +5,7 @@ import {UserServiceInterface} from './user-service.interface.js';
 import { inject, injectable } from 'inversify';
 import { AppComponent } from '../../types/app-component.enum.js';
 import { LoggerInterface } from '../../core/logger/logger.interface.js';
-import UpdateUserDto from './dto/update-user.dto.js';
+import { UpdateUserDto } from './dto/update-user.dto.js';
 
 @injectable()
 export default class UserService implements UserServiceInterface {
