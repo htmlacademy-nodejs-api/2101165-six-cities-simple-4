@@ -14,8 +14,8 @@ import HttpError from '../../core/errors/http-error.js';
 @injectable()
 export default class CityController extends Controller {
   constructor(
-        @inject(AppComponent.LoggerInterface) protected readonly logger: LoggerInterface,
-        @inject(AppComponent.CityServiceInterface) private readonly cityService: CityServiceInterface,
+    @inject(AppComponent.LoggerInterface) protected readonly logger: LoggerInterface,
+    @inject(AppComponent.CityServiceInterface) private readonly cityService: CityServiceInterface,
   ) {
     super(logger);
 
