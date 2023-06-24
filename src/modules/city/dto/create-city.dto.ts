@@ -1,3 +1,5 @@
+import { CityEnum } from "../../../types/city.enum";
+
 export default class CreateCityDto {
-  public name!: string;
+  public name!: CityEnum;
 }

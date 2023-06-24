@@ -1,3 +1,6 @@
+import { CityEnum } from "./city.enum";
+
 export type City = {
-  name: string;
+  name: CityEnum;
+  
 };
