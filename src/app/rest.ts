@@ -71,7 +71,7 @@ export default class RestApplication {
 
   public async init() {
     this.logger.info('Application initialization…');
-    
+
     await this._initDb();
     await this._initMiddleware();
     await this._initRoutes();

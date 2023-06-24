@@ -11,7 +11,7 @@ import { UpdateOfferDto } from './dto/update-offer.dto.js';
 // import { ConfigInterface } from '../../core/config/config.interface.js';
 // import { RestSchema } from '../../core/config/rest.schema.js';
 import { OfferServiceInterface } from './offer-service.interface.js';
-import { UnknownRecord } from "../../types/unknown-record.type.js";
+import { UnknownRecord } from '../../types/unknown-record.type.js';
 // import CreateOfferDto from './dto/create-offer.dto.js';
 
 
@@ -31,12 +31,12 @@ export default class OfferController extends Controller {
     this.logger.info('Register routes for OfferController…');
 
     this.addRoute({
-      path: '/', 
-      method: HttpMethod.Get, 
+      path: '/',
+      method: HttpMethod.Get,
       handler: this.index
     });
     // this.addRoute({
-    //   path: '/', method: HttpMethod.Post, 
+    //   path: '/', method: HttpMethod.Post,
     //   handler: this.create
     // });
     this.addRoute({
