@@ -7,6 +7,7 @@ import { LoggerInterface } from '../../core/logger/logger.interface.js';
 import { OfferServiceInterface } from './offer-service.interface.js';
 import { UpdateOfferDto } from './dto/update-offer.dto.js';
 import { DEFAULT_OFFER_COUNT, DEFAULT_OFFER_SORT } from './offer.constant.js';
+// import { SortType } from '../../types/sort-type.enum.js';
 
 @injectable()
 export default class OfferService implements OfferServiceInterface {

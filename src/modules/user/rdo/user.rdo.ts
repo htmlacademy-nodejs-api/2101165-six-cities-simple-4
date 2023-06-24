@@ -11,7 +11,7 @@ export default class UserRdo {
   public email!: string;
 
   @Expose()
-  public userpic!: string;
+  public userPic!: string;
 
   @Expose()
   public isPro!: string;

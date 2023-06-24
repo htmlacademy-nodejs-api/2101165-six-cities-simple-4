@@ -15,6 +15,7 @@ async function bootstrap() {
     createUserContainer(),
     createOfferContainer(),
     createCommentContainer(),
+    createCityContainer()
   );
 
   const application = mainContainer.get<RestApplication>(AppComponent.RestApplication);

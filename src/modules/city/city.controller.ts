@@ -14,7 +14,7 @@ import HttpError from '../../core/errors/http-error.js';
 @injectable()
 export default class CityController extends Controller {
   constructor(
-    @inject(AppComponent.LoggerInterface) protected readonly logger: LoggerInterface,
+    @inject(AppComponent.LoggerInterface) logger: LoggerInterface,
     @inject(AppComponent.CityServiceInterface) private readonly cityService: CityServiceInterface,
   ) {
     super(logger);
@@ -27,8 +27,8 @@ export default class CityController extends Controller {
 
   public async index(_req: Request, res: Response): Promise<void> {
     const cities = await this.cityService.find();
-    const citiesToResponse = fillDTO(CityRdo, cities);
-    this.ok(res, citiesToResponse);
+    const categoriesToResponse = fillDTO(CityRdo, cities);
+    this.ok(res, categoriesToResponse);
   }
 
   public async create(

@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
+import { Request, Response } from 'express';
 import { Controller } from '../../core/controller/controller.abstract.js';
 import { LoggerInterface } from '../../core/logger/logger.interface.js';
 import { AppComponent } from '../../types/app-component.enum.js';
