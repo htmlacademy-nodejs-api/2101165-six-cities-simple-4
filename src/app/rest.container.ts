@@ -8,7 +8,7 @@ import { RestSchema } from '../core/config/rest.schema.js';
 import ConfigService from '../core/config/config.service.js';
 import { DatabaseClientInterface } from '../core/database-client/database-client.interface.js';
 import MongoClientService from '../core/database-client/mongo-client.service.js';
-import { ExceptionFilterInterface } from '../core/exception-filters/exception-filter.interface';
+import { ExceptionFilterInterface } from '../core/exception-filters/exception-filter.interface.js';
 import ExceptionFilter from '../core/exception-filters/exception-filter.js';
 
 export function createRestApplicationContainer() {
