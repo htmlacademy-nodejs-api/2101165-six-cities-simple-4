@@ -10,11 +10,7 @@ export interface CityEntity extends defaultClasses.Base {}
   },
 })
 export class CityEntity extends defaultClasses.TimeStamps implements City {
-  @prop({
-    required: true,
-    unique: true,
-    type: () => String,
-  })
+  @prop({ required: true, enum: CityEnum })
   public name!: CityEnum;
 }
 

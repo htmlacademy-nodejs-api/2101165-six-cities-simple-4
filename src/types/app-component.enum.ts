@@ -11,4 +11,8 @@ export const AppComponent = {
   CommentModel: Symbol.for('CommentModel'),
   CityModel: Symbol.for('CityModel'),
   CityServiceInterface: Symbol.for('CityServiceInterface'),
+  CityController: Symbol.for('CityController'),
+  ExceptionFilterInterface: Symbol.for('ExceptionFilterInterface'),
+  UserController: Symbol.for('UserController'),
+  OfferController: Symbol.for('OfferController'),
 } as const;
